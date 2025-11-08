@@ -1,0 +1,274 @@
+:root{
+    /* Troque estes valores pelos hexes do SVG para corresponder exatamente à paleta */
+    --page-bg: #0f172a;         /* fundo da página */
+    --card-bg: #1f2937;         /* fundo do cartão/calculadora */
+    --input-bg: #0f1724;        /* fundo do campo de input */
+    --text: #e6eef4;            /* texto principal */
+    --muted: #9fb2c6;           /* texto secundário / unidades */
+    --accent: #6c63ff;          /* cor de destaque (linha do título / botão) */
+    --accent-contrast: #ffffff; /* cor do texto do botão (contraste) */
+    --shadow: rgba(2,6,23,0.6); /* sombra */
+}
+
+/* fonte e reset */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: var(--page-bg);
+    transition: background-color .15s linear, color .15s linear;
+}
+
+#container {
+    display:flex;
+    align-items: center;
+    gap: 3.5rem;
+    width: 90%;
+    max-width: 1100px;
+    margin-inline: auto;
+    /* sem altura fixa */
+}
+
+/* imagem (primeira section) */
+#container > section:first-child img {
+    width: 100%;
+    max-width: 31rem;
+    height: auto;
+    display: block;
+}
+
+/* limitar largura da calculadora para não preencher todo o espaço */
+#calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    color: var(--text);
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    flex: 0 1 480px;   /* base 480px, não expande indefinidamente */
+    max-width: 520px;  /* largura máxima do cartão */
+    min-width: 280px;
+    box-shadow: 0 6px 18px var(--shadow);
+}
+
+/* form e elementos internos */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+#title {
+    font-size: 2rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: var(--text);
+}
+
+#title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: var(--accent);
+    width: 6.5rem;
+    height: 3px;
+    border-radius: 3px;
+}
+
+.input-box label {
+    font-size: 1.05rem;
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--input-bg);
+    padding: 0.45rem;
+    border-radius: 8px;
+    margin-top: 6px;
+}
+
+/* ícone e unidade */
+.input-field span,
+.input-field i,
+.input-field .material-icons {
+    color: #cbd5e1;
+    font-size: 1.25rem;
+    padding: 0.35rem 0.6rem;
+}
+
+/* unidade com pequeno espaçamento */
+.input-field .unit {
+    padding-left: 0.4rem;
+    padding-right: 0.6rem;
+    color: var(--muted);
+}
+
+/* input ocupa o espaço disponível */
+.input-field input {
+    background-color: transparent;
+    border: none;
+    flex: 1 1 auto;
+    font-size: 1.05rem;
+    color: var(--text);
+    padding: 0 0.5rem;
+    min-width: 0;
+}
+
+/* esconder spin buttons cross-browser */
+.input-field input::-webkit-outer-spin-button,
+.input-field input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.input-field input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.input-field input:focus {
+    outline: 2px solid rgba(108,99,255,0.12); /* corresponde a --accent em rgba */
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+#calculate {
+    border: none;
+    font-size: 1.05rem;
+    font-weight: 700;
+    background-color: var(--accent);
+    color: var(--accent-contrast);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+#calculate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(108,99,255,0.12); /* corresponde a --accent em rgba */
+}
+
+#result {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 0.75rem 0;
+    flex-wrap: wrap;
+}
+
+#bmi {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 2rem;
+    color: var(--text);
+}
+
+#bmi span:last-child {
+    font-size: 0.875rem;
+    color: #cbd5e1;
+}
+
+#description {
+    width: 15.5rem;
+    color: #cbd5e1;
+}
+
+#more_info {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 1.5rem 0 0;
+}
+
+#more_info a {
+    color: var(--accent);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.875rem;
+    text-decoration: none;
+}
+
+#more_info a:hover {
+    color: #cbd5e1;
+}
+
+.hidden {
+    display: none;
+}
+
+.normal {
+    color: var(--accent);
+}
+
+.attention {
+    color: #ef4444;
+}
+
+/* Responsividade - empilha em telas menores */
+@media screen and (max-width: 1024px) {
+    #container {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        gap: 1.5rem;
+    }
+
+    #container > section:first-child {
+        width: 100%;
+    }
+
+    #container > section:first-child img {
+        max-width: 22rem;
+        margin: 0 auto;
+    }
+
+    #calculator {
+        width: 100%;
+        max-width: 640px;
+        border-radius: 10px;
+        padding: 1.5rem;
+        flex: 1 1 auto;
+    }
+
+    #result {
+        gap: 1rem;
+    }
+}
+
+/* Ajustes para telas bem pequenas */
+@media screen and (max-width: 480px) {
+    #title {
+        font-size: 1.5rem;
+    }
+
+    #container > section:first-child img {
+        max-width: 16rem;
+    }
+
+    .input-field span,
+    .input-field .material-icons {
+        font-size: 1rem;
+        padding: 0.25rem 0.5rem;
+    }
+}

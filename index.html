@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora IMC</title>
+
+    <meta name="description" content="Calculadora simples de IMC">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <main id="container">
+        <section>
+            <img src="assets/images/undraw_working-out_6ksl.svg" alt="Pessoa se exercitando">
+        </section>
+        <section id="calculator">
+            <form id="form" novalidate>
+            <h1 id="title">
+                Calculadora - IMC
+            </h1>
+
+            <div class="input-box">
+                <label for="weight">
+                    Peso em Kg
+                </label>
+                <div class="input-field">
+                    <span class="material-icons" aria-hidden="true">monitor_weight</span>
+                    <input type="number"
+                    id="weight"
+                    name="weight"
+                    required
+                    min="0"
+                    step="0.1"
+                    placeholder="Ex: 70"
+                    aria-label="Peso em quilogramas">
+                    <span class="unit">
+                        Kg
+                    </span>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <label for="height">
+                    Altura em metros
+                </label>
+                <div class="input-field">
+                    <span class="material-icons" aria-hidden="true">height</span>
+                    <input
+                        type="number"
+                        id="height"
+                        name="height"
+                        required
+                        min="0"
+                        step="0.01"
+                        placeholder="Ex: 1,75"
+                        aria-label="Altura em metros">
+                    <span class="unit">
+                        m
+                    </span>
+                </div>
+            </div>
+
+            <button id="calculate" type="submit">
+                Calcular
+            </button>
+            </form>
+
+             <div id="infos" class="hidden" role="region" aria-live="polite">
+                <div id="result">
+                    <div id="bmi">
+                        <span id="value"></span>
+                        <span>Seu IMC</span>
+                    </div>
+                    <div id="description">
+                        <span></span>
+                    </div>
+                </div>
+
+                <div id="more_info">
+                    <a href="https://mundoeducacao.uol.com.br/saude-bem-estar/imc.html" target="_blank" rel="noopener noreferrer">
+                        Mais informações sobre o IMC
+                        <span class="material-icons" aria-hidden="true">open_in_new</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
